@@ -1,0 +1,18 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "cart",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "pokemons": {
+      "collection": "pokemon",
+      "via": "carts",
+      "dominant": true
+    }
+  }
+}
