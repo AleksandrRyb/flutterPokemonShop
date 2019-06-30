@@ -25,7 +25,7 @@ class PokemonItem extends StatelessWidget {
         return Colors.white;
       }
     }
-    final String pictureUrl = 'http://172.30.173.49:1337${item.picture['url']}';
+    final String pictureUrl = 'http://localhost:1337${item.picture['url']}';
     return  InkWell (
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(

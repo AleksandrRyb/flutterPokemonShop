@@ -56,13 +56,13 @@ class CartPageState extends State<CartPage> {
         builder: (_, state) {
           _addCard(cardToken) async {
             final User user = state.user;
-            await http.put('http://172.30.173.49:1337/users/${user.id}', body: {
+            await http.put('http://localhost:1337/users/${user.id}', body: {
               "card_token": cardToken
             },
             headers: {
               "Authorization": "Bearer ${user.jwt}"
             });
-            http.Response response = await http.post('http://172.30.173.49:1337/card/add', body: {
+            http.Response response = await http.post('http://localhost:1337/card/add', body: {
               "source": cardToken, "customer": user.customerId
             });
 

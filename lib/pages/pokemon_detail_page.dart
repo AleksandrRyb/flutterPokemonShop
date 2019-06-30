@@ -22,7 +22,7 @@ class PokemonDetailPage extends StatelessWidget {
         return Colors.white;
       }
     }
-    final String pictureUrl = 'http://172.30.173.49:1337${item.picture['url']}';
+    final String pictureUrl = 'http://localhost:1337${item.picture['url']}';
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       key: _scaffoldKey,

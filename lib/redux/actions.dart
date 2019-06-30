@@ -20,7 +20,7 @@ ThunkAction<AppState> getUserAction = (Store<AppState> store) async {
 /*Pokemons Actions*/
 
 ThunkAction<AppState> getPokemonsAction = (Store<AppState>store) async {
-  http.Response response = await http.get('http://172.30.173.49:1337/pokemons');
+  http.Response response = await http.get('http://localhost:1337/pokemons');
   final List<dynamic> responseData = json.decode(response.body);
   List<Pokemon> pokemons = [];
   responseData.forEach((pokemonData) {
@@ -53,7 +53,7 @@ ThunkAction<AppState> toggleCartPokemonAction(cartPokemon) {
       updatedCartList.add(cartPokemon);
     }
     final List<String> cartPokemonsIds = updatedCartList.map((pokemon) => pokemon.id).toList();
-    await http.put('http://172.30.173.49:1337/carts/${user.cartId}',
+    await http.put('http://localhost:1337/carts/${user.cartId}',
      body: {
       'pokemons': json.encode(cartPokemonsIds)
      },
@@ -73,7 +73,7 @@ ThunkAction<AppState> getCartPokemonAction = (Store<AppState> store) async {
     return;
   }
   final User user = User.fromJson(json.decode(storedUser));
-  http.Response response = await http.get('http://172.30.173.49:1337/carts/${user.cartId}', headers: {
+  http.Response response = await http.get('http://localhost:1337/carts/${user.cartId}', headers: {
     'Authorization': 'Bearer ${user.jwt}'
   });
   final responseData = json.decode(response.body)['pokemons'];
@@ -88,7 +88,7 @@ ThunkAction<AppState> getCartPokemonAction = (Store<AppState> store) async {
 
 ThunkAction<AppState> getCardsAction = (Store<AppState> store) async {
   final String customerId = store.state.user.customerId;
-  http.Response response = await http.get('http://172.30.173.49:1337/card?$customerId');
+  http.Response response = await http.get('http://localhost:1337/card?$customerId');
   final responseData = json.decode(response.body);
   store.dispatch(GetCardsAction(responseData));
 };
@@ -97,7 +97,7 @@ ThunkAction<AppState> getCardsAction = (Store<AppState> store) async {
 
 ThunkAction<AppState> getCardTokenAction = (Store<AppState> store) async {
   final String jwt = store.state.user.jwt;
-  http.Response response = await http.get('http://172.30.173.49:1337/users/me', headers: {
+  http.Response response = await http.get('http://localhost:1337/users/me', headers: {
     'Authorization': 'Bearer $jwt'
   });
   final responseData = json.decode(response.body);

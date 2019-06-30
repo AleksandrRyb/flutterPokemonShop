@@ -113,7 +113,7 @@ class RegisterPageState extends State<RegisterPage> {
     setState(() {
       _isSubmitting = true;
     });
-    http.Response response = await http.post('http://172.30.173.49:1337/auth/local/register', body: {
+    http.Response response = await http.post('http://localhost:1337/auth/local/register', body: {
       'username': _username,
       'email': _email,
       'password': _password

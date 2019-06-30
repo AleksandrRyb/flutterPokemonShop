@@ -101,7 +101,7 @@ class LoginPageState extends State<LoginPage> {
     setState(() {
       _isSubmitting = true;
     });
-    http.Response response = await http.post('http://172.30.173.49:1337/auth/local', body: {
+    http.Response response = await http.post('http://localhost:1337/auth/local', body: {
       'identifier': _email,
       'password': _password
     });
