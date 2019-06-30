@@ -1,3 +1,4 @@
+## To Start Project install strapi server in server directory
 # flutter_app
 
 A new Flutter application.
